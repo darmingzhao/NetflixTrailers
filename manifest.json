@@ -1,0 +1,32 @@
+{
+	"name": "Netflix Trailers",
+	"version": "1.0",
+	"description": "Adds a 'Watch Trailer' button to all shows/movies in Netflix that, when clicked, opens the youtube trailer of the show/movie in a new tab.",
+	"permissions": [
+		"tabs",
+		"activeTab",
+		"https://www.netflix.com/*"
+	],
+	"icons": {
+		"16": "/Images/netflix-icon-16.png",
+		"48": "/Images/netflix-icon-48.png",
+		"128": "/Images/netflix-icon-128.png"
+	},
+	"background": {
+		"scripts": ["background.js"],
+		"persistent": false
+	},
+	"content_scripts": [
+		{
+			"matches": ["https://www.netflix.com/*"],
+			"include_globs":[
+				"*browse*",
+				"*title*",
+				"*search*",
+				"*Kids*"
+			],
+			"js": ["/Libraries/jquery.js"]
+		}
+	],
+	"manifest_version": 2
+}
